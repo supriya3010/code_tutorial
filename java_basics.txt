@@ -1,0 +1,131 @@
+===========================================CONSTRUCTOR========================================================
+Constructor name must be the same as its class name
+A Constructor must have no explicit return type
+A Java constructor cannot be abstract, static, final, and synchronized
+=========================================================================================================================
+You can’t override constructor, nor inherit, by default, so there is no need to make it as final.
+Constructor is invoked when an object is created, so you don’t need to use static here again.
+Constructor needs to have a body and implementation, so there is no sense in making them abstract.
+The fact is constructors are implicitly final and static, you don’t need to declare it again.
+As far as synchronization is concerned, again it cannot be implemented on constructors. The concept of synchronization is to prevent multiple threads from accessing a method, at one time. Only the thread that creates an object needs to have access to it, while constructor is invoked, so you can’t switch out to another thread.
+Constructor Overriding is never possible in Java. This is because, Constructor looks like a method but name should be as class name and no return value. Overriding means what we have declared in Super class, that exactly we have to declare in Sub class it is called Overriding
+==============================================================================================================================================
+There are two types of constructors in Java: Default constructor (no-arg constructor) and Parameterized constructor
+Java Constructor																										Java Method
+A constructor is used to initialize the state of an object.								A method is used to expose the behavior of an object.
+A constructor must not have a return type.													A method must have a return type.
+The constructor is invoked implicitly.															The method is invoked explicitly.
+The Java compiler provides a default constructor 											The method is not provided by the compiler in any case.
+if you don't have any constructor in a class.	
+The constructor name must be same as the class name.								The method name may or may not be same as the class name.
+================================================================================================
+Constructor returns the instance of the class, though it doesnt have any return type.
+Java provides a Constructor class which can be used to get the internal information of a constructor in the class. It is found in the java.lang.reflect package.
+=======================================================================================================
+
+
+=============================================STATIC KEYWORD=================================================================
+If you declare any variable as static, it is known as a static variable.
+The static variable can be used to refer to the common property of all objects (which is not unique for each object), for example, the company name of employees, college name of students, etc.
+The static variable gets memory only once in the class area at the time of class loading.
+================================================================================
+If you apply static keyword with any method, it is known as static method.
+A static method belongs to the class rather than the object of a class.
+A static method can be invoked without the need for creating an instance of a class.
+A static method can access static data member and can change the value of it.
+=================================================================================
+The static method can not use non static data member or call non-static method directly.
+this and super cannot be used in static context.
+=========================================================================
+Static blocks Is used to initialize the static data member.
+It is executed before the main method at the time of classloading.
+=========================================================================
+Can we execute a program without main() method?
+Ans) No, one of the ways was the static block, but it was possible till JDK 1.6. Since JDK 1.7, it is not possible to execute a java class without the main method.
+Since JDK 1.7 and above, output would be:
+Error: Main method not found in class A3, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+============================================================================
+
+
+
+===========================================THIS KEYWORD===================================================================
+this can be used to refer current class instance variable.
+this can be used to invoke current class method (implicitly)
+this() can be used to invoke current class constructor.
+this can be passed as an argument in the method call.
+this can be passed as argument in the constructor call.
+this can be used to return the current class instance from the method.
+=======================================================================================
+onstructor call must be the first statement in a constructor
+Call to this() must be the first statement in constructor.
+We can return this keyword as an statement from the method. In such case, return type of the method must be the class type (non-primitive).
+===========================================================================================================================
+
+=======================================INHERITANCE IN JAVA==================================================================
+Inheritance in Java is a mechanism in which one object acquires all the properties and behaviors of a parent object. It is an important part of OOPs (Object Oriented programming system).
+The idea behind inheritance in Java is that you can create new classes that are built upon existing classes. When you inherit from an existing class, you can reuse methods and fields of the parent class. Moreover, you can add new methods and fields in your current class also. 
+It represents IS-A relationship, parent-child relationship.
+
+class A{}
+class B extends A {}
+class C extends B{}
+
+public class Test {
+    public static void main(String[] args) {
+        A a = new A();
+        A a1=new A();
+        B b = new B();
+//        a=b;// ok
+//        b=(B)a;// ClassCastException
+//        a=(A)a1;  // ok
+//        a=a1;  // ok
+
+        a=(B)a1;  // compiles ok, ClassCastException
+    }
+}
+
+===============================================================================================
+If a class have an entity reference, it is known as Aggregation. Aggregation represents HAS-A relationship.
+Consider a situation, Employee object contains many informations such as id, name, emailId etc. It contains one more object named address, which contains its own informations such as city, state, country, zipcode etc
+
+======================================================================================================
+
+=========================================METHOD OVERLOADING==============================================================
+Different ways to overload the method
+There are two ways to overload the method in java
+
+By changing number of arguments
+By changing the data type
+Method Overloading is not possible by changing the return type of the method only.
+Type promotion in java where byte can be promoted to short, int, long, float or double. The short datatype can be promoted to int,long,float or double. The char datatype can be promoted to int,long,float or double and so on.
+If there are no matching type arguments in the method, and each method promotes similar number of arguments, there will be ambiguity.
+If there are matching type arguments in the method, type promotion is not performed.
+==========================================================================================================================
+
+
+========================================METHOD OVERRIDING==================================================================
+If subclass (child class) has the same method as declared in the parent class, it is known as method overriding in Java.
+In other words, If a subclass provides the specific implementation of the method that has been declared by one of its parent class, it is known as method overriding.
+Method overriding is used to provide the specific implementation of a method which is already provided by its superclass.
+Method overriding is used for runtime polymorphism
+
+Rules for Java Method Overriding
+The method must have the same name as in the parent class
+The method must have the same parameter as in the parent class.
+There must be an IS-A relationship (inheritance).
+
+Why can we not override static method?
+It is because the static method is bound with class whereas instance method is bound with an object. Static belongs to the class area, and an instance belongs to the heap area.
+
+Can we override java main method?
+No, because the main is a static method.
+
+
+Method Overloading	vs Method Overriding
+1)	Method overloading is used to increase the readability of the program.	Method overriding is used to provide the specific implementation of the method that is already provided by its super class.
+2)	Method overloading is performed within class.	Method overriding occurs in two classes that have IS-A (inheritance) relationship.
+3)	In case of method overloading, parameter must be different.	In case of method overriding, parameter must be same.
+4)	Method overloading is the example of compile time polymorphism.	Method overriding is the example of run time polymorphism.
+5)	In java, method overloading can't be performed by changing return type of the method only. Return type can be same or different in method overloading. But you must have to change the parameter.	Return type must be same or covariant in method overriding.
